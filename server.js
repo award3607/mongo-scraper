@@ -24,5 +24,23 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//port
+var PORT = process.env.PORT || 3000;
+
+//static
+app.use(express.static('public'));
+
 //routes
 app.use('routes');
+//404
+app.use((req, res, next) => {
+	res.status(404).redirect('/');
+});
+
+//actually start it
+app.listen(PORT, () => {
+    console.log(`Mongo-scraper listening on PORT ${PORT}`);
+});
+
+
+
