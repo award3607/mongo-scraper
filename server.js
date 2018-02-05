@@ -2,8 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var exphbs = require('express-handlebars');
+var mongoose = require('mongoose');
 
-var routes = require('./routes');
+var routes = require('./routes/routes.js');
 
 var app = express();
 
@@ -13,9 +14,7 @@ var db = require('./models');
 var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongo-scraper';
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
+mongoose.connect(MONGODB_URI);
 
 
 //middleware
@@ -31,7 +30,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 //routes
-app.use('routes');
+app.use(routes);
 //404
 app.use((req, res, next) => {
 	res.status(404).redirect('/');
