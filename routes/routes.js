@@ -5,9 +5,7 @@ var noteController = require('../controllers/noteController.js');
 
 var router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('index');
-});
+router.get('/', articleController.index);
 
 router.get("/api/scrape", articleController.scrape);
 

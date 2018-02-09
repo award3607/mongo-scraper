@@ -4,7 +4,12 @@
         <h1>Mongo-Scraper</h1>
         <p>Scrapin' up University of Kansas sports news</p>
     </div>
+    {{#each data}}
     <div class="row">
-        <p>Placeholder</p>
+        <div class="panel panel-default">
+            <div class="panel-heading"><a href="{{url}}" target="_blank"><h4>{{title}}</a></h4></div>
+            <div class="panel-body">{{summary}}</div>
+        </div>
     </div>
+    {{/each}}
 </div>

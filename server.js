@@ -14,8 +14,10 @@ var db = require('./models');
 var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongo-scraper';
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, {poolSize: 15});
 
+// Use morgan logger for logging requests
+app.use(logger("dev"));
 
 //middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
