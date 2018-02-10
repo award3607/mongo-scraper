@@ -119,6 +119,8 @@ exports.addNote = (req, res) => {
 
 exports.deleteNote = (req, res) => {
   console.log('Note id: ' + req.params.noteId);
+
+  //I don't understand why $pull isn't removing the note's ObjectId from the Article's notes array
   db.Article.findByIdAndUpdate(req.params.articleId, { $pull: { notes: { _id: req.params.noteId } }}, { new: true })
   .then(function(dbArticle) {
     return db.Note.findByIdAndRemove(req.params.noteId);
