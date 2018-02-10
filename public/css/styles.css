@@ -1,0 +1,14 @@
+/* .note-delete {
+    float: right;
+} */
+
+.modal-body ul li {
+    display: block;
+    padding: 30px;
+}
+
+.modal-body ul li .btn{
+    float: right;
+    position: relative;
+    bottom: 10px;
+}

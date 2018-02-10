@@ -2,13 +2,24 @@
 <div class="container">
     <div class="jumbotron">
         <h1>Mongo-Scraper</h1>
-        <p>Scrapin' up University of Kansas sports news</p>
+        <p>Scrapin' up University of Kansas men's basketball sports news</p>
     </div>
     {{#each data}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading"><a href="{{url}}" target="_blank"><h4>{{title}}</a></h4></div>
+            <div class="panel-heading">
+                <a href="{{url}}" target="_blank"><h4>{{title}}</h4></a>
+                {{#if saved}}
+                <button class="btn btn-danger navbar-btn unsave-article" data-id="{{_id}}">Remove saved article</button>
+                <button class="btn btn-primary navbar-btn show-notes" data-id="{{_id}}">Notes</button>
+                {{else}}
+                <button class="btn btn-warning navbar-btn save-article" data-id="{{_id}}">Save article</button>
+                {{/if}}
+            </div>
             <div class="panel-body">{{summary}}</div>
+            {{#if saved}}
+            {{> note-modal}}
+            {{/if}}
         </div>
     </div>
     {{/each}}
