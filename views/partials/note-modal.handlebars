@@ -11,14 +11,14 @@
                 <ul class="list-group">
                     {{#each notes}}
                         <li class="list-group-item">{{this.body}}
-                            <button class="btn btn-danger note-delete" data-article-id="{{_id}}" data-note-id="{{this._id}}">x</button>
+                            <button class="btn btn-danger note-delete" data-note-id="{{this._id}}">x</button>
                         </li>
                     {{/each}}
                 </ul>
                 <textarea placeholder="New Note" rows="4" cols="60"></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-primary note-save" data-id="{{_id}}">Save note</button>
+                <button type="button" class="btn btn-default btn-primary note-save" data-article-id="{{_id}}">Save note</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

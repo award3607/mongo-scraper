@@ -15,6 +15,6 @@ router.put('/articles/save/:id', articleController.saveArticle);
 router.put('/articles/unsave/:id', articleController.unSaveArticle);
 router.post('/articles/:id', articleController.addNote);
 
-router.delete('/articles/:articleId/notes/:noteId', articleController.deleteNote);
+router.put('/articles/:articleId/notes/:noteId', articleController.deleteNote);
 
 module.exports = router;

@@ -32,8 +32,10 @@ $(document).ready(function() {
         $(`#${id}`).modal();
     });
     $(document).on('click', '.note-save', function() {
-        let id = $(this).data('id');
-        let note = $(this).parent().siblings('.modal-body').children('textarea').val().trim();
+        let id = $(this).data('article-id');
+        let note = $(this).parent()
+            .siblings('.modal-body')
+            .children('textarea').val().trim();
         $.post(`/articles/${id}`, {body: note})
             .done(function() {
                 location.reload(true);
@@ -41,8 +43,12 @@ $(document).ready(function() {
     });
     $(document).on('click', '.note-delete', function() {
         let noteId = $(this).data('note-id');
-        let articleId = $(this).data('article-id');
-        $.ajax(`articles/${articleId}/notes/${noteId}`, {method: 'DELETE'})
+        let articleId = $(this).parents('.modal-body')
+            .siblings('.modal-footer')
+            .children('.note-save').data('article-id');
+        console.log('Note id: ' + noteId);
+        console.log('Article id: ' + articleId);
+        $.ajax(`articles/${articleId}/notes/${noteId}`, {method: 'PUT'})
             .done(function() {
                 location.reload(true);
             });
